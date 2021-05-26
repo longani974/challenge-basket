@@ -1,10 +1,17 @@
 import Link from "next/link";
 import Button from "../ui/Button";
 
-function ChoisirJoueur({ listeDesJoueurs }) {
+function ChoisirJoueur({
+    listeDesJoueurs,
+    toggleMontrerAjouterScore,
+    joueurChoisi,
+}) {
     function choisirJoueur(nom, prenom, id) {
-        alert("prenom:" + prenom + " nom:" + nom + " id:" + id);
+        toggleMontrerAjouterScore();
+
+        joueurChoisi(nom, prenom);
     }
+
     return (
         <div>
             <h2>Choisir un/une participant(e):</h2>
