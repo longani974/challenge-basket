@@ -9,7 +9,7 @@ function ChoisirJoueur({
     function choisirJoueur(nom, prenom, id) {
         toggleMontrerAjouterScore();
 
-        joueurChoisi(nom, prenom);
+        joueurChoisi(nom, prenom, id);
     }
 
     return (

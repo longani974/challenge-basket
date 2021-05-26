@@ -33,6 +33,7 @@ function AjouterAthlete() {
             nom: nomRef.current.value,
             prenom: prenomRef.current.value,
             id: Date.now(),
+            epreuves: {},
         };
 
         const listeDesJoueurs = localStorage.getItem("joueurs") // Vérifie si une liste de joueurs existe déjà

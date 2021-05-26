@@ -9,6 +9,7 @@ function MarineJohannes() {
     const [montrerAjouterScore, setMontrerAjouterScore] = useState(false);
     const [nom, setNom] = useState();
     const [prenom, setPrenom] = useState();
+    const [id, setId] = useState();
 
     useEffect(() => {
         if (localStorage.getItem("joueurs"))
@@ -19,9 +20,10 @@ function MarineJohannes() {
         setMontrerAjouterScore((previewState) => !previewState);
     }
 
-    function joueurChoisi(nom, prenom) {
+    function joueurChoisi(nom, prenom, id) {
         setNom(nom);
         setPrenom(prenom);
+        setId(id);
     }
 
     return (
@@ -32,12 +34,14 @@ function MarineJohannes() {
                 toggleMontrerAjouterScore={toggleMontrerAjouterScore}
                 joueurChoisi={joueurChoisi}
             />
-            <AjouterScore
-                display={montrerAjouterScore}
-                toggleMontrerAjouterScore={toggleMontrerAjouterScore}
-                nom={nom}
-                prenom={prenom}
-            />
+            {montrerAjouterScore ? (
+                <AjouterScore
+                    toggleMontrerAjouterScore={toggleMontrerAjouterScore}
+                    nom={nom}
+                    prenom={prenom}
+                    id={id}
+                />
+            ) : null}
         </div>
     );
 }
