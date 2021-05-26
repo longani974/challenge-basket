@@ -69,24 +69,30 @@ function AjouterAthlete() {
                     id="prenom"
                     ref={prenomRef}
                 ></input>
-                <button className="bg-purple-600 text-white mt-4 px-2 py-4 rounded-full text-lg font-semibold hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50">
+                <Button bgColor="bg-purple-600" bgColorHover="bg-purple-700">
                     Ajouter
-                </button>
-                <Link href="/">
-                    <a>
-                        <button className="w-full bg-purple-400 text-white mt-4 px-2 py-4 rounded-full text-lg font-semibold hover:bg-purple-500S focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50">
-                            Revenir à l'accueil
-                        </button>
-                    </a>
-                </Link>
-                <Link href="/liste-des-joueurs">
-                    <a>
-                        <button className="w-full bg-purple-400 text-white mt-4 px-2 py-4 rounded-full text-lg font-semibold hover:bg-purple-500S focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50">
-                            Liste des joueurs
-                        </button>
-                    </a>
-                </Link>
-            </form>
+                </Button>
+            </form>{" "}
+            <Link href="/">
+                <a>
+                    <Button
+                        bgColor="bg-purple-400"
+                        bgColorHover="bg-purple-600"
+                    >
+                        Revenir à l'accueil
+                    </Button>
+                </a>
+            </Link>
+            <Link href="/liste-des-joueurs">
+                <a>
+                    <Button
+                        bgColor="bg-purple-400"
+                        bgColorHover="bg-purple-600"
+                    >
+                        Liste des joueurs/joueuses
+                    </Button>
+                </a>
+            </Link>
         </>
     );
 }

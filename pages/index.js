@@ -18,10 +18,11 @@ export default function Home() {
             <main>
                 <Link href="ajouter-athlete">
                     <a>
-                        <Button>
-                            Ajouter
-                            <br />
-                            un/une athlète
+                        <Button
+                            bgColor="bg-purple-600"
+                            bgColorHover="bg-purple-700"
+                        >
+                            Ajouter un/une athlète
                         </Button>
                     </a>
                 </Link>
