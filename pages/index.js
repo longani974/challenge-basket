@@ -16,6 +16,16 @@ export default function Home() {
             </Head>
 
             <main>
+                <Link href="choisir-une-epreuve">
+                    <a>
+                        <Button
+                            bgColor="bg-purple-600"
+                            bgColorHover="bg-purple-700"
+                        >
+                            Choisir une épreuve
+                        </Button>
+                    </a>
+                </Link>
                 <Link href="ajouter-athlete">
                     <a>
                         <Button
