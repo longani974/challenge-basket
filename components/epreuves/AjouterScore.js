@@ -1,7 +1,13 @@
 import { useEffect, useRef } from "react";
 import Button from "../ui/Button";
 
-function AjouterScore({ toggleMontrerAjouterScore, nom, prenom, id }) {
+function AjouterScore({
+    toggleMontrerAjouterScore,
+    nom,
+    prenom,
+    id,
+    nomEpreuve,
+}) {
     const score = useRef();
 
     useEffect(() => {
@@ -21,20 +27,28 @@ function AjouterScore({ toggleMontrerAjouterScore, nom, prenom, id }) {
             score: score.current.value,
         };
 
-        const updatedListeDesJoueurs = listeDesJoueurs.map((joueur) => {
-            if (joueur.id === id) {
-                if (!joueur.epreuves.marine_johanesse) {
-                    joueur.epreuves.marine_johanesse = [statsJoueur];
-                } else if (joueur.epreuves.marine_johanesse)
-                    joueur.epreuves.marine_johanesse.push(statsJoueur);
-                return joueur;
-            }
-            return joueur;
-        });
+        const updatedListeDesJoueurs = miseAJourScore(
+            listeDesJoueurs,
+            statsJoueur
+        );
 
         localStorage.setItem("joueurs", JSON.stringify(updatedListeDesJoueurs));
 
         toggleMontrerAjouterScore();
+    }
+
+    function miseAJourScore(listeDesJoueurs, statsJoueur) {
+        const listeMiseAJour = listeDesJoueurs.map((joueur) => {
+            if (joueur.id === id) {
+                if (!joueur.epreuves[nomEpreuve]) {
+                    joueur.epreuves[nomEpreuve] = [statsJoueur];
+                } else if (joueur.epreuves[nomEpreuve])
+                    joueur.epreuves[nomEpreuve].push(statsJoueur);
+                return joueur;
+            }
+            return joueur;
+        });
+        return listeMiseAJour;
     }
 
     return (

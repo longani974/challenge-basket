@@ -40,6 +40,7 @@ function MarineJohannes() {
                     nom={nom}
                     prenom={prenom}
                     id={id}
+                    nomEpreuve="marine_johanesse"
                 />
             ) : null}
         </div>
