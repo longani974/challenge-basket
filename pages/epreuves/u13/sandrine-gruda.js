@@ -1,11 +1,7 @@
-import TitreEpreuve from "../../../components/epreuves/TitreEpreuve";
+import Epreuve from "../../../components/epreuves/Epreuve";
 
 function SandrineGruda() {
-    return (
-        <div>
-            <TitreEpreuve>Sandrine Gruda</TitreEpreuve>
-        </div>
-    );
+    return <Epreuve titreEpreuve="Sandrine Gruda" />;
 }
 
 export default SandrineGruda;

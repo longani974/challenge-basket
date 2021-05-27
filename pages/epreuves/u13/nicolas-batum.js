@@ -1,11 +1,7 @@
-import TitreEpreuve from "../../../components/epreuves/TitreEpreuve";
+import Epreuve from "../../../components/epreuves/Epreuve";
 
 function NicolasBatum() {
-    return (
-        <div>
-            <TitreEpreuve>Nicolas Batum</TitreEpreuve>
-        </div>
-    );
+    return <Epreuve titreEpreuve="Nicolas Batum" />;
 }
 
 export default NicolasBatum;
