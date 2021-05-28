@@ -53,20 +53,25 @@ function ListeDesJoueurs() {
                     const bgIndex = index % 2 === 0 ? 100 : 200;
 
                     return (
-                        <li
-                            key={joueur.id}
-                            className={`bg-purple-${bgIndex} py-2 px-2 flex justify-between`}
-                        >
-                            <p>
-                                {index + 1} {joueur.nom} {joueur.prenom}
-                            </p>
-                            <button
-                                className="bg-white text-red-700 rounded-full w-6 h-6"
-                                onClick={() => supprimerJoueur(joueur.id)}
-                            >
-                                X
-                            </button>
-                        </li>
+                        <Link key={joueur.id} href={`/joueur/${joueur.id}`}>
+                            <a>
+                                <li
+                                    className={`bg-purple-${bgIndex} py-2 px-2 flex justify-between`}
+                                >
+                                    <p>
+                                        {index + 1} {joueur.nom} {joueur.prenom}
+                                    </p>
+                                    <button
+                                        className="bg-white text-red-700 rounded-full w-6 h-6"
+                                        onClick={() =>
+                                            supprimerJoueur(joueur.id)
+                                        }
+                                    >
+                                        X
+                                    </button>
+                                </li>
+                            </a>
+                        </Link>
                     );
                 })}
             </ul>
