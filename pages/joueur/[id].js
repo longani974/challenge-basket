@@ -1,5 +1,7 @@
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import Button from "../../components/ui/Button";
 import { transformerTitreEnCleObjet } from "../../utils";
 
 function joueur() {
@@ -53,9 +55,28 @@ function joueur() {
         return dernierScore;
     }
 
+    function scoreMoyen(epreuve) {
+        const cleEpreuve = transformerTitreEnCleObjet(epreuve);
+        let scoreTotal = 0;
+        let nbDeSession = 0;
+
+        if (joueur && joueur.epreuves[cleEpreuve]) {
+            joueur.epreuves[cleEpreuve].forEach((data) => {
+                scoreTotal += +data.score;
+                nbDeSession++;
+            });
+        }
+
+        if (scoreTotal === 0 && nbDeSession === 0) return "X";
+
+        const scoreMoyen = scoreTotal / nbDeSession;
+
+        return scoreMoyen.toFixed(1);
+    }
+
     return (
         <div>
-            <p className="text-xl text-center">
+            <p className="text-xl text-center mb-3">
                 {joueur ? `${joueur.nom} ${joueur.prenom}` : null}
             </p>
             <table className="table-fixed bg-purple-100">
@@ -91,6 +112,7 @@ function joueur() {
                         </td>
                     </tr>
                 </tbody>
+
                 <tbody>
                     <tr>
                         <th className="bg-purple-400" colSpan="4">
@@ -115,7 +137,52 @@ function joueur() {
                         </td>
                     </tr>
                 </tbody>
+
+                <tbody>
+                    <tr>
+                        <th className="bg-purple-400" colSpan="4">
+                            Score Moyen
+                        </th>
+                    </tr>
+                </tbody>
+
+                <tbody>
+                    <tr>
+                        <td className="text-center">
+                            {scoreMoyen("Marine Johannes")}
+                        </td>
+                        <td className="text-center">
+                            {scoreMoyen("Evan Fournier")}
+                        </td>
+                        <td className="text-center">
+                            {scoreMoyen("Nicolas Batum")}
+                        </td>
+                        <td className="text-center">
+                            {scoreMoyen("Sandrine Gruda")}
+                        </td>
+                    </tr>
+                </tbody>
             </table>
+            <Link href="/liste-des-joueurs">
+                <a>
+                    <Button
+                        bgColor="bg-purple-600"
+                        bgColorHover="bg-purple-700"
+                    >
+                        Liste des joueurs/joueuses
+                    </Button>
+                </a>
+            </Link>
+            <Link href="/">
+                <a>
+                    <Button
+                        bgColor="bg-purple-400"
+                        bgColorHover="bg-purple-600"
+                    >
+                        Revenir à l'accueil
+                    </Button>
+                </a>
+            </Link>
         </div>
     );
 }
