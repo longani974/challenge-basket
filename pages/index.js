@@ -55,6 +55,16 @@ export default function Home() {
                         </Button>
                     </a>
                 </Link>
+                <Link href="/liste-des-joueurs">
+                    <a>
+                        <Button
+                            bgColor="bg-purple-400"
+                            bgColorHover="bg-purple-600"
+                        >
+                            Liste des joueurs/joueuses
+                        </Button>
+                    </a>
+                </Link>
             </main>
         </div>
     );

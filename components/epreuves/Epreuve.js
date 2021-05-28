@@ -57,6 +57,16 @@ function Epreuve({ titreEpreuve }) {
                     </Button>
                 </a>
             </Link>
+            <Link href="/">
+                <a>
+                    <Button
+                        bgColor="bg-purple-400"
+                        bgColorHover="bg-purple-600"
+                    >
+                        Revenir à l'accueil
+                    </Button>
+                </a>
+            </Link>
         </div>
     );
 }
