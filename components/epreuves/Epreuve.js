@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { transformerTitreEnCleObjet } from "../../utils";
 import Button from "../ui/Button";
 import AjouterScore from "./AjouterScore";
 import ChoisirJoueur from "./ChoisirJoueur";
@@ -12,7 +13,7 @@ function Epreuve({ titreEpreuve }) {
     const [prenom, setPrenom] = useState();
     const [id, setId] = useState();
 
-    const nomEpreuve = transformerTitreEnCleObjet();
+    const nomEpreuve = transformerTitreEnCleObjet(titreEpreuve);
 
     useEffect(() => {
         if (localStorage.getItem("joueurs"))
@@ -27,14 +28,6 @@ function Epreuve({ titreEpreuve }) {
         setNom(nom);
         setPrenom(prenom);
         setId(id);
-    }
-
-    function transformerTitreEnCleObjet() {
-        const nom = [...titreEpreuve].map((caractere) => {
-            if (caractere === " ") return (caractere = "_");
-            return caractere.toLowerCase();
-        });
-        return nom.join("");
     }
 
     return (

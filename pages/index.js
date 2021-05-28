@@ -1,9 +1,17 @@
 import Head from "next/head";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import CardStats from "../components/stats/CardStats";
 import Button from "../components/ui/Button";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
+    const [data, setData] = useState();
+
+    useEffect(() => {
+        setData(JSON.parse(localStorage.getItem("joueurs")));
+    }, []);
+
     return (
         <div className={styles.container}>
             <Head>
@@ -16,7 +24,18 @@ export default function Home() {
             </Head>
 
             <main>
-                <Link href="choisir-une-epreuve">
+                <div className="flex flex-col gap-y-4">
+                    <div className="flex justify-around">
+                        <CardStats data={data} epreuve="Marine Johannes" />
+                        <CardStats data={data} epreuve="Evan Fournier" />
+                    </div>
+                    <div className="flex justify-around">
+                        <CardStats data={data} epreuve="Nicolas Batum" />
+                        <CardStats data={data} epreuve="Sandrine Gruda" />
+                    </div>
+                </div>
+
+                <Link href="/choisir-une-epreuve">
                     <a>
                         <Button
                             bgColor="bg-purple-600"
@@ -26,7 +45,7 @@ export default function Home() {
                         </Button>
                     </a>
                 </Link>
-                <Link href="ajouter-athlete">
+                <Link href="/ajouter-athlete">
                     <a>
                         <Button
                             bgColor="bg-purple-600"
