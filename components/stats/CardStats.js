@@ -5,7 +5,7 @@ function CardStats({ data, epreuveId }) {
     const [moyenneEpreuve, setMoyenneEpreuve] = useState(0);
     const epreuve = transformerIdEnTitreEpreuve(epreuveId);
     const couleurEpreuve = couleurSelonEpreuve(epreuveId);
-    console.log(couleurEpreuve);
+
     useEffect(() => {
         if (data) {
             // prettier-ignore

@@ -1,13 +1,16 @@
 import Link from "next/link";
 import Button from "../components/ui/Button";
-import { transformerIdEnTitreEpreuve } from "../utils";
+import { couleurSelonEpreuve, transformerIdEnTitreEpreuve } from "../utils";
 
 function ChoisirUneEpreuve() {
     return (
         <div>
             <Link href="/epreuve/1">
                 <a>
-                    <Button bgColor="bg-green-400" bgColorHover="bg-green-600">
+                    <Button
+                        bgColor={`bg-${couleurSelonEpreuve(1)}`}
+                        bgColorHover="bg-green-600"
+                    >
                         {transformerIdEnTitreEpreuve(1)}
                     </Button>
                 </a>
@@ -15,7 +18,7 @@ function ChoisirUneEpreuve() {
             <Link href="/epreuve/2">
                 <a>
                     <Button
-                        bgColor="bg-yellow-400"
+                        bgColor={`bg-${couleurSelonEpreuve(2)}`}
                         bgColorHover="bg-yellow-600"
                     >
                         {transformerIdEnTitreEpreuve(2)}
@@ -24,14 +27,20 @@ function ChoisirUneEpreuve() {
             </Link>
             <Link href="/epreuve/3">
                 <a>
-                    <Button bgColor="bg-blue-400" bgColorHover="bg-blue-600">
+                    <Button
+                        bgColor={`bg-${couleurSelonEpreuve(3)}`}
+                        bgColorHover="bg-blue-600"
+                    >
                         {transformerIdEnTitreEpreuve(3)}
                     </Button>
                 </a>
             </Link>
             <Link href="/epreuve/4">
                 <a>
-                    <Button bgColor="bg-pink-400" bgColorHover="bg-pink-600">
+                    <Button
+                        bgColor={`bg-${couleurSelonEpreuve(4)}`}
+                        bgColorHover="bg-pink-600"
+                    >
                         {transformerIdEnTitreEpreuve(4)}
                     </Button>
                 </a>
