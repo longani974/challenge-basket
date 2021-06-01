@@ -1,28 +1,27 @@
 import { useEffect, useState } from "react";
-import { transformerTitreEnCleObjet } from "../../utils";
+import { transformerIdEnTitreEpreuve } from "../../utils";
 
-function CardStats({ data, epreuve }) {
+function CardStats({ data, epreuveId }) {
     const [moyenneEpreuve, setMoyenneEpreuve] = useState(0);
+    const epreuve = transformerIdEnTitreEpreuve(epreuveId);
 
     useEffect(() => {
         if (data) {
             // prettier-ignore
-            setMoyenneEpreuve(moyennePourUneEpreuveEquipe(epreuve));
+            setMoyenneEpreuve(moyennePourUneEpreuveEquipe(epreuveId));
         }
     }, [data]);
 
-    function moyennePourUneEpreuveEquipe(epreuve) {
-        const cleEpreuve = transformerTitreEnCleObjet(epreuve);
-
+    function moyennePourUneEpreuveEquipe(epreuveId) {
         let pointsTotal = 0;
         let nbEpreuves = 0;
 
         for (let i = 0; i < data.length; i++) {
-            if (data[i].epreuves[cleEpreuve]) {
-                for (let j = 0; j < data[i].epreuves[cleEpreuve].length; j++) {
+            if (data[i].epreuves[epreuveId]) {
+                for (let j = 0; j < data[i].epreuves[epreuveId].length; j++) {
                     pointsTotal =
                         pointsTotal +
-                        Number(data[i].epreuves[cleEpreuve][j].score);
+                        Number(data[i].epreuves[epreuveId][j].score);
                     nbEpreuves++;
                 }
             }
