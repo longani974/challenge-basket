@@ -26,12 +26,12 @@ export default function Home() {
             <main>
                 <div className="flex flex-col gap-y-4">
                     <div className="flex justify-around">
-                        <CardStats data={data} epreuve="Marine Johannes" />
-                        <CardStats data={data} epreuve="Evan Fournier" />
+                        <CardStats data={data} epreuve="1" />
+                        <CardStats data={data} epreuve="2" />
                     </div>
                     <div className="flex justify-around">
-                        <CardStats data={data} epreuve="Nicolas Batum" />
-                        <CardStats data={data} epreuve="Sandrine Gruda" />
+                        <CardStats data={data} epreuve="3" />
+                        <CardStats data={data} epreuve="4" />
                     </div>
                 </div>
 
