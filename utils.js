@@ -29,3 +29,26 @@ export function transformerIdEnTitreEpreuve(id) {
     }
     return titre;
 }
+
+export function couleurSelonEpreuve(epreuve) {
+    let couleur;
+
+    switch (+epreuve) {
+        case 1:
+            couleur = "green-400";
+            break;
+        case 2:
+            couleur = "yellow-400";
+            break;
+        case 3:
+            couleur = "blue-400";
+            break;
+        case 4:
+            couleur = "pink-400";
+            break;
+
+        default:
+            break;
+    }
+    return couleur;
+}

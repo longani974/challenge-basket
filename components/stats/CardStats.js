@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { transformerIdEnTitreEpreuve } from "../../utils";
+import { couleurSelonEpreuve, transformerIdEnTitreEpreuve } from "../../utils";
 
 function CardStats({ data, epreuveId }) {
     const [moyenneEpreuve, setMoyenneEpreuve] = useState(0);
     const epreuve = transformerIdEnTitreEpreuve(epreuveId);
-
+    const couleurEpreuve = couleurSelonEpreuve(epreuveId);
+    console.log(couleurEpreuve);
     useEffect(() => {
         if (data) {
             // prettier-ignore
@@ -37,8 +38,10 @@ function CardStats({ data, epreuveId }) {
     return (
         <div className="text-center bg-purple-100 rounded-xl py-2 w-32">
             <p className="text-xs">Moy. équipe</p>
-            <p className="text-sm">{epreuve}</p>
-            <p className="text-xl">{moyenneEpreuve}</p>
+            <p className={`text-sm text-${couleurEpreuve}`}>{epreuve}</p>
+            <p className="text-xl text-purple-900 font-bold">
+                {moyenneEpreuve}
+            </p>
         </div>
     );
 }
