@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Button from "../components/ui/Button";
+import { transformerIdEnTitreEpreuve } from "../utils";
 
 function ChoisirUneEpreuve() {
     return (
@@ -7,7 +8,7 @@ function ChoisirUneEpreuve() {
             <Link href="/epreuve/1">
                 <a>
                     <Button bgColor="bg-green-400" bgColorHover="bg-green-600">
-                        Marine Johannes
+                        {transformerIdEnTitreEpreuve(1)}
                     </Button>
                 </a>
             </Link>
@@ -17,21 +18,21 @@ function ChoisirUneEpreuve() {
                         bgColor="bg-yellow-400"
                         bgColorHover="bg-yellow-600"
                     >
-                        Evan Fournier
+                        {transformerIdEnTitreEpreuve(2)}
                     </Button>
                 </a>
             </Link>
             <Link href="/epreuve/3">
                 <a>
                     <Button bgColor="bg-blue-400" bgColorHover="bg-blue-600">
-                        Nicolas Batum
+                        {transformerIdEnTitreEpreuve(3)}
                     </Button>
                 </a>
             </Link>
             <Link href="/epreuve/4">
                 <a>
                     <Button bgColor="bg-pink-400" bgColorHover="bg-pink-600">
-                        Sandrine Gruda
+                        {transformerIdEnTitreEpreuve(4)}
                     </Button>
                 </a>
             </Link>
