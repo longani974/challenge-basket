@@ -1,19 +1,24 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { transformerTitreEnCleObjet } from "../../utils";
+import {
+    transformerIdEnTitreEpreuve,
+    transformerTitreEnCleObjet,
+} from "../../utils";
 import Button from "../ui/Button";
 import AjouterScore from "./AjouterScore";
 import ChoisirJoueur from "./ChoisirJoueur";
 import TitreEpreuve from "./TitreEpreuve";
 
-function Epreuve({ titreEpreuve }) {
+function Epreuve({ idEpreuve }) {
     const [listeDesJoueurs, setListeDesJoueurs] = useState([]);
     const [montrerAjouterScore, setMontrerAjouterScore] = useState(false);
     const [nom, setNom] = useState();
     const [prenom, setPrenom] = useState();
     const [id, setId] = useState();
 
-    const nomEpreuve = transformerTitreEnCleObjet(titreEpreuve);
+    const titreEpreuve = transformerIdEnTitreEpreuve(idEpreuve);
+
+    // const nomEpreuve = transformerTitreEnCleObjet(titreEpreuve);
 
     useEffect(() => {
         if (localStorage.getItem("joueurs"))
@@ -38,15 +43,15 @@ function Epreuve({ titreEpreuve }) {
                 toggleMontrerAjouterScore={toggleMontrerAjouterScore}
                 joueurChoisi={joueurChoisi}
             />
-            {montrerAjouterScore ? (
+            {montrerAjouterScore && (
                 <AjouterScore
                     toggleMontrerAjouterScore={toggleMontrerAjouterScore}
                     nom={nom}
                     prenom={prenom}
                     id={id}
-                    nomEpreuve={nomEpreuve}
+                    idEpreuve={idEpreuve}
                 />
-            ) : null}
+            )}
             <Link href="/choisir-une-epreuve">
                 <a>
                     <Button

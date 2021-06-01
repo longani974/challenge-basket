@@ -6,7 +6,7 @@ function AjouterScore({
     nom,
     prenom,
     id,
-    nomEpreuve,
+    idEpreuve,
 }) {
     const score = useRef();
 
@@ -40,10 +40,10 @@ function AjouterScore({
     function miseAJourScore(listeDesJoueurs, statsJoueur) {
         const listeMiseAJour = listeDesJoueurs.map((joueur) => {
             if (joueur.id === id) {
-                if (!joueur.epreuves[nomEpreuve]) {
-                    joueur.epreuves[nomEpreuve] = [statsJoueur];
-                } else if (joueur.epreuves[nomEpreuve])
-                    joueur.epreuves[nomEpreuve].push(statsJoueur);
+                if (!joueur.epreuves[idEpreuve]) {
+                    joueur.epreuves[idEpreuve] = [statsJoueur];
+                } else if (joueur.epreuves[idEpreuve])
+                    joueur.epreuves[idEpreuve].push(statsJoueur);
                 return joueur;
             }
             return joueur;

@@ -2,7 +2,10 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Button from "../../components/ui/Button";
-import { transformerTitreEnCleObjet } from "../../utils";
+import {
+    transformerIdEnTitreEpreuve,
+    transformerTitreEnCleObjet,
+} from "../../utils";
 
 function joueur() {
     const [data, setData] = useState(null);
@@ -27,11 +30,11 @@ function joueur() {
     }, [data, id]);
 
     function meilleurScore(epreuve) {
-        const cleEpreuve = transformerTitreEnCleObjet(epreuve);
+        // const cleEpreuve = transformerTitreEnCleObjet(epreuve);
         let meilleurScore = 0;
 
-        if (joueur && joueur.epreuves[cleEpreuve]) {
-            joueur.epreuves[cleEpreuve].forEach((data) => {
+        if (joueur && joueur.epreuves[epreuve]) {
+            joueur.epreuves[epreuve].forEach((data) => {
                 if (+data.score > meilleurScore) meilleurScore = data.score;
             });
         }
@@ -39,12 +42,12 @@ function joueur() {
     }
 
     function dernierScore(epreuve) {
-        const cleEpreuve = transformerTitreEnCleObjet(epreuve);
+        // const cleEpreuve = transformerTitreEnCleObjet(epreuve);
         let date = 0;
         let dernierScore = "X";
 
-        if (joueur && joueur.epreuves[cleEpreuve]) {
-            joueur.epreuves[cleEpreuve].forEach((data) => {
+        if (joueur && joueur.epreuves[epreuve]) {
+            joueur.epreuves[epreuve].forEach((data) => {
                 if (+data.date > date) {
                     date = data.date;
                     dernierScore = data.score;
@@ -56,12 +59,12 @@ function joueur() {
     }
 
     function scoreMoyen(epreuve) {
-        const cleEpreuve = transformerTitreEnCleObjet(epreuve);
+        // const cleEpreuve = transformerTitreEnCleObjet(epreuve);
         let scoreTotal = 0;
         let nbDeSession = 0;
 
-        if (joueur && joueur.epreuves[cleEpreuve]) {
-            joueur.epreuves[cleEpreuve].forEach((data) => {
+        if (joueur && joueur.epreuves[epreuve]) {
+            joueur.epreuves[epreuve].forEach((data) => {
                 scoreTotal += +data.score;
                 nbDeSession++;
             });
@@ -82,10 +85,10 @@ function joueur() {
             <table className="table-fixed bg-purple-100">
                 <thead className="bg-purple-200">
                     <tr>
-                        <th>Marine Johannes</th>
-                        <th>Evan Fournier</th>
-                        <th>Nicolas Batum</th>
-                        <th>Sandrine Gruda</th>
+                        <th>{transformerIdEnTitreEpreuve(1)}</th>
+                        <th>{transformerIdEnTitreEpreuve(2)}</th>
+                        <th>{transformerIdEnTitreEpreuve(3)}</th>
+                        <th>{transformerIdEnTitreEpreuve(4)}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -98,18 +101,10 @@ function joueur() {
 
                 <tbody>
                     <tr className="text-center">
-                        <td className="text-center">
-                            {meilleurScore("Marine Johannes")}
-                        </td>
-                        <td className="text-center">
-                            {meilleurScore("Evan Fournier")}
-                        </td>
-                        <td className="text-center">
-                            {meilleurScore("Nicolas Batum")}
-                        </td>
-                        <td className="text-center">
-                            {meilleurScore("Sandrine Gruda")}
-                        </td>
+                        <td className="text-center">{meilleurScore(1)}</td>
+                        <td className="text-center">{meilleurScore(2)}</td>
+                        <td className="text-center">{meilleurScore(3)}</td>
+                        <td className="text-center">{meilleurScore(4)}</td>
                     </tr>
                 </tbody>
 
@@ -123,18 +118,10 @@ function joueur() {
 
                 <tbody>
                     <tr>
-                        <td className="text-center">
-                            {dernierScore("Marine Johannes")}
-                        </td>
-                        <td className="text-center">
-                            {dernierScore("Evan Fournier")}
-                        </td>
-                        <td className="text-center">
-                            {dernierScore("Nicolas Batum")}
-                        </td>
-                        <td className="text-center">
-                            {dernierScore("Sandrine Gruda")}
-                        </td>
+                        <td className="text-center">{dernierScore(1)}</td>
+                        <td className="text-center">{dernierScore(2)}</td>
+                        <td className="text-center">{dernierScore(3)}</td>
+                        <td className="text-center">{dernierScore(4)}</td>
                     </tr>
                 </tbody>
 
@@ -148,18 +135,10 @@ function joueur() {
 
                 <tbody>
                     <tr>
-                        <td className="text-center">
-                            {scoreMoyen("Marine Johannes")}
-                        </td>
-                        <td className="text-center">
-                            {scoreMoyen("Evan Fournier")}
-                        </td>
-                        <td className="text-center">
-                            {scoreMoyen("Nicolas Batum")}
-                        </td>
-                        <td className="text-center">
-                            {scoreMoyen("Sandrine Gruda")}
-                        </td>
+                        <td className="text-center">{scoreMoyen(1)}</td>
+                        <td className="text-center">{scoreMoyen(2)}</td>
+                        <td className="text-center">{scoreMoyen(3)}</td>
+                        <td className="text-center">{scoreMoyen(4)}</td>
                     </tr>
                 </tbody>
             </table>

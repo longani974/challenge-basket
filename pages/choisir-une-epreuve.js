@@ -4,14 +4,14 @@ import Button from "../components/ui/Button";
 function ChoisirUneEpreuve() {
     return (
         <div>
-            <Link href="epreuves/u13/marine-johannes">
+            <Link href="/epreuve/1">
                 <a>
                     <Button bgColor="bg-green-400" bgColorHover="bg-green-600">
                         Marine Johannes
                     </Button>
                 </a>
             </Link>
-            <Link href="epreuves/u13/evan-fournier">
+            <Link href="/epreuve/2">
                 <a>
                     <Button
                         bgColor="bg-yellow-400"
@@ -21,14 +21,14 @@ function ChoisirUneEpreuve() {
                     </Button>
                 </a>
             </Link>
-            <Link href="epreuves/u13/nicolas-batum">
+            <Link href="/epreuve/3">
                 <a>
                     <Button bgColor="bg-blue-400" bgColorHover="bg-blue-600">
                         Nicolas Batum
                     </Button>
                 </a>
             </Link>
-            <Link href="epreuves/u13/sandrine-gruda">
+            <Link href="/epreuve/4">
                 <a>
                     <Button bgColor="bg-pink-400" bgColorHover="bg-pink-600">
                         Sandrine Gruda
