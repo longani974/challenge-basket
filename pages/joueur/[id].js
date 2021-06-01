@@ -77,6 +77,103 @@ function joueur() {
         return scoreMoyen.toFixed(1);
     }
 
+    function dernieresSession(nbSessions) {
+        let dataReunies;
+        let dataTriéesParJours = null;
+        const contenu = [];
+
+        if (joueur && joueur.epreuves) {
+            dataReunies = reunirData();
+
+            dataTriéesParJours = trierDataParJour(dataReunies);
+
+            console.log(dataTriéesParJours);
+
+            for (let i = 0; i < dataTriéesParJours.length; i++) {
+                contenu.push(
+                    <tr
+                        key={i}
+                        className={`bg-purple-${i % 2 === 0 ? 100 : 200}`}
+                    >
+                        <td className="text-center">
+                            {scoreMoyenParJour(1, dataTriéesParJours[i])}
+                        </td>
+                        <td className="text-center">
+                            {scoreMoyenParJour(2, dataTriéesParJours[i])}
+                        </td>
+                        <td className="text-center">
+                            {scoreMoyenParJour(3, dataTriéesParJours[i])}
+                        </td>
+                        <td className="text-center">
+                            {scoreMoyenParJour(4, dataTriéesParJours[i])}
+                        </td>
+                    </tr>
+                );
+            }
+
+            return <>{contenu.map((data) => data)}</>;
+        }
+    }
+
+    function reunirData() {
+        let array = [];
+        for (let i = 1; i < 5; i++) {
+            joueur.epreuves[i].forEach((data) =>
+                array.push({
+                    day: Math.floor(data.date / (1000 * 60 * 60 * 24)),
+                    score: data.score,
+                    epreuve: i,
+                })
+            );
+        }
+
+        array.sort((a, b) => b.day - a.day);
+
+        return array;
+    }
+
+    function trierDataParJour(dataATrier) {
+        const dataTriéesParJours = [];
+
+        for (let i = 0; i < 10; i++) {
+            if (dataATrier.length) {
+                const dataDeUnJour = dataATrier.filter(
+                    (data) => data.day === dataATrier[0].day
+                );
+
+                dataATrier = dataATrier.slice(
+                    dataDeUnJour.length,
+                    dataATrier.length
+                );
+
+                dataTriéesParJours.push(dataDeUnJour);
+            }
+        }
+        return dataTriéesParJours;
+    }
+
+    function scoreMoyenParJour(epreuve, data) {
+        const tableauParEpreuve = data.filter((d) => d.epreuve === epreuve);
+
+        let scoreTotal = 0;
+        let scoreMoyen = 0;
+        let scoreExiste = false;
+
+        tableauParEpreuve.forEach((data) => {
+            if (data.epreuve) {
+                scoreExiste = true;
+                scoreTotal += +data.score;
+            }
+        });
+
+        if (!scoreExiste) return "X";
+
+        if (scoreTotal === 0) return 0;
+
+        scoreMoyen = scoreTotal / tableauParEpreuve.length;
+        return scoreMoyen.toFixed(1);
+    }
+
     return (
         <div>
             <p className="text-xl text-center mb-3">
@@ -140,6 +237,22 @@ function joueur() {
                         <td className="text-center">{scoreMoyen(3)}</td>
                         <td className="text-center">{scoreMoyen(4)}</td>
                     </tr>
+                </tbody>
+
+                <tbody>
+                    <tr>
+                        <th className="bg-purple-400" colSpan="4">
+                            Dix Dernières Sessions
+                        </th>
+                    </tr>
+                </tbody>
+
+                <tbody>
+                    {/* <td className="text-center">{scoreMoyen(1)}</td>
+                        <td className="text-center">{scoreMoyen(2)}</td>
+                        <td className="text-center">{scoreMoyen(3)}</td>
+                        <td className="text-center">{scoreMoyen(4)}</td> */}
+                    {dernieresSession()}
                 </tbody>
             </table>
             <Link href="/liste-des-joueurs">
