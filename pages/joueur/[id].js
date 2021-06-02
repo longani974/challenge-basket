@@ -118,17 +118,20 @@ function joueur() {
     function reunirData() {
         let array = [];
         for (let i = 1; i < 5; i++) {
-            joueur.epreuves[i].forEach((data) =>
-                array.push({
-                    day: Math.floor(data.date / (1000 * 60 * 60 * 24)),
-                    score: data.score,
-                    epreuve: i,
-                })
-            );
+            if (joueur.epreuves[i]) {
+                joueur.epreuves[i].forEach((data) =>
+                    array.push({
+                        day: Math.floor(data.date / (1000 * 60 * 60 * 24)),
+                        score: data.score,
+                        epreuve: i,
+                    })
+                );
+            }
         }
 
+        console.log(array);
         array.sort((a, b) => b.day - a.day);
-
+        console.log(array);
         return array;
     }
 
