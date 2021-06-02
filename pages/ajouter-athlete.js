@@ -7,7 +7,7 @@ function AjouterAthlete() {
     const prenomRef = useRef();
 
     const inputStyle =
-        "border border-purple-700 rounded-full px-3 focus:outline-none";
+        "border-2 border-purple-700 rounded-full px-3 py-2 focus:outline-none";
 
     function handleSubmit(e) {
         e.preventDefault();

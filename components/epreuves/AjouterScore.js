@@ -55,18 +55,21 @@ function AjouterScore({
         <div
             className={` w-full h-full absolute top-0 left-0 flex items-center justify-center`}
         >
-            <div className="bg-white w-5/6 h-5/6 px-4 py-4 relative z-10 rounded-xl">
-                <h2 className="text-center">{nom + " " + prenom}</h2>
-                <label className="px-2" htmlFor="score">
-                    Score:
-                </label>
+            <div className="bg-white  max-w-md w-5/6 h-5/6 px-4 py-4 relative z-10 rounded-xl">
+                <h2 className="text-center font-bold mb-4">
+                    {nom + " " + prenom}
+                </h2>
                 <form onSubmit={confirmerScore}>
+                    <label className="px-2" htmlFor="score">
+                        Score:
+                    </label>
+                    <br />
                     <input
                         type="number"
                         id="score"
                         placeholder={0}
                         ref={score}
-                        className="border border-purple-700 rounded-full px-3 py-2"
+                        className="border-2 border-purple-700 rounded-full px-3 py-2 focus:outline-none focus:border-4 text-right"
                     />
                 </form>
                 <div className="flex w-full gap-3">
