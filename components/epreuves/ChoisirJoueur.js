@@ -30,7 +30,7 @@ function ChoisirJoueur({
                                     )
                                 }
                                 key={joueur.id}
-                                className={`bg-purple-${bgIndex} py-2 px-2 flex justify-between`}
+                                className={`bg-purple-${bgIndex} py-2 px-2 flex justify-between cursor-pointer`}
                             >
                                 <p>
                                     {index + 1} {joueur.nom} {joueur.prenom}
