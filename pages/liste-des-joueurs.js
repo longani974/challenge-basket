@@ -56,7 +56,7 @@ function ListeDesJoueurs() {
                         <Link key={joueur.id} href={`/joueur/${joueur.id}`}>
                             <a>
                                 <li
-                                    className={`bg-purple-${bgIndex} py-2 px-2 flex justify-between`}
+                                    className={`bg-purple-${bgIndex} py-2 px-2 flex justify-between cursor-pointer`}
                                 >
                                     <p>
                                         {index + 1} {joueur.nom} {joueur.prenom}

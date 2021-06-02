@@ -174,18 +174,35 @@ function joueur() {
         return scoreMoyen.toFixed(1);
     }
 
+    function transformerTitreSurDeuxLignes(epreuve) {
+        const titre = transformerIdEnTitreEpreuve(epreuve);
+
+        const titreSplit = titre.split(" ");
+
+        const prenom = titreSplit[0];
+        const nom = titreSplit[1];
+
+        return (
+            <>
+                {prenom}
+                <br />
+                {nom}
+            </>
+        );
+    }
+
     return (
         <div>
             <p className="text-xl text-center mb-3">
                 {joueur ? `${joueur.nom} ${joueur.prenom}` : null}
             </p>
-            <table className="table-fixed bg-purple-100">
+            <table className="table-fixed w-full bg-purple-100">
                 <thead className="bg-purple-200">
                     <tr>
-                        <th>{transformerIdEnTitreEpreuve(1)}</th>
-                        <th>{transformerIdEnTitreEpreuve(2)}</th>
-                        <th>{transformerIdEnTitreEpreuve(3)}</th>
-                        <th>{transformerIdEnTitreEpreuve(4)}</th>
+                        <th>{transformerTitreSurDeuxLignes(1)}</th>
+                        <th>{transformerTitreSurDeuxLignes(2)}</th>
+                        <th>{transformerTitreSurDeuxLignes(3)}</th>
+                        <th>{transformerTitreSurDeuxLignes(4)}</th>
                     </tr>
                 </thead>
                 <tbody>
