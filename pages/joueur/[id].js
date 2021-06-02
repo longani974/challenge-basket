@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Button from "../../components/ui/Button";
 import {
+    couleurSelonEpreuve,
     transformerIdEnTitreEpreuve,
     transformerTitreEnCleObjet,
 } from "../../utils";
@@ -91,20 +92,14 @@ function joueur() {
                 contenu.push(
                     <tr
                         key={i}
-                        className={`bg-purple-${i % 2 === 0 ? 100 : 200}`}
+                        className={`text-center rounded-xlbg-purple-${
+                            i % 2 === 0 ? 100 : 200
+                        }`}
                     >
-                        <td className="text-center">
-                            {scoreMoyenParJour(1, dataTriéesParJours[i])}
-                        </td>
-                        <td className="text-center">
-                            {scoreMoyenParJour(2, dataTriéesParJours[i])}
-                        </td>
-                        <td className="text-center">
-                            {scoreMoyenParJour(3, dataTriéesParJours[i])}
-                        </td>
-                        <td className="text-center">
-                            {scoreMoyenParJour(4, dataTriéesParJours[i])}
-                        </td>
+                        <td>{scoreMoyenParJour(1, dataTriéesParJours[i])}</td>
+                        <td>{scoreMoyenParJour(2, dataTriéesParJours[i])}</td>
+                        <td>{scoreMoyenParJour(3, dataTriéesParJours[i])}</td>
+                        <td>{scoreMoyenParJour(4, dataTriéesParJours[i])}</td>
                     </tr>
                 );
             }
@@ -182,11 +177,11 @@ function joueur() {
         const nom = titreSplit[1];
 
         return (
-            <>
+            <span className={`text-${couleurSelonEpreuve(epreuve)}`}>
                 {prenom}
                 <br />
                 {nom}
-            </>
+            </span>
         );
     }
 
@@ -263,13 +258,7 @@ function joueur() {
                     </tr>
                 </tbody>
 
-                <tbody>
-                    {/* <td className="text-center">{scoreMoyen(1)}</td>
-                        <td className="text-center">{scoreMoyen(2)}</td>
-                        <td className="text-center">{scoreMoyen(3)}</td>
-                        <td className="text-center">{scoreMoyen(4)}</td> */}
-                    {dernieresSession()}
-                </tbody>
+                <tbody>{dernieresSession()}</tbody>
             </table>
             <Link href="/liste-des-joueurs">
                 <a>
