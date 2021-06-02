@@ -87,8 +87,6 @@ function joueur() {
 
             dataTriéesParJours = trierDataParJour(dataReunies);
 
-            console.log(dataTriéesParJours);
-
             for (let i = 0; i < dataTriéesParJours.length; i++) {
                 contenu.push(
                     <tr
@@ -129,9 +127,7 @@ function joueur() {
             }
         }
 
-        console.log(array);
         array.sort((a, b) => b.day - a.day);
-        console.log(array);
         return array;
     }
 
