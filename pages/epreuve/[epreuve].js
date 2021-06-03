@@ -5,7 +5,7 @@ function epreuve() {
     const router = useRouter();
 
     const { epreuve } = router.query;
-    console.log(epreuve);
+
     return <Epreuve idEpreuve={`${epreuve}`} />;
 }
 
