@@ -1,9 +1,32 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Button from "../components/ui/Button";
+import { motion } from "framer-motion";
 
 function ListeDesJoueurs() {
     const [listeDesJoueurs, setListeDesJoueurs] = useState([]);
+
+    const variants = {
+        hidden: {
+            opacity: 0,
+            scale: 0.7,
+        },
+        visible: {
+            opacity: 1,
+            scale: 1,
+        },
+    };
+
+    const buttonVariants = {
+        hidden: {
+            opacity: 0,
+            y: "100%",
+        },
+        visible: {
+            opacity: 1,
+            y: 0,
+        },
+    };
 
     useEffect(() => {
         setListeDesJoueurs(JSON.parse(localStorage.getItem("joueurs")));
@@ -48,7 +71,12 @@ function ListeDesJoueurs() {
 
     return (
         <div>
-            <ul>
+            <motion.ul
+                variants={variants}
+                initial="hidden"
+                animate="visible"
+                exit="hidden"
+            >
                 {listeDesJoueurs.map((joueur, index) => {
                     const bgIndex = index % 2 === 0 ? 100 : 200;
 
@@ -74,18 +102,25 @@ function ListeDesJoueurs() {
                         </Link>
                     );
                 })}
-            </ul>
+            </motion.ul>
 
-            <Link href="/">
-                <a>
-                    <Button
-                        bgColor="bg-purple-400"
-                        bgColorHover="bg-purple-600"
-                    >
-                        Revenir à l'accueil
-                    </Button>
-                </a>
-            </Link>
+            <motion.div
+                variants={buttonVariants}
+                initial="hidden"
+                animate="visible"
+                exit="hidden"
+            >
+                <Link href="/">
+                    <a>
+                        <Button
+                            bgColor="bg-purple-400"
+                            bgColorHover="bg-purple-600"
+                        >
+                            Revenir à l'accueil
+                        </Button>
+                    </a>
+                </Link>
+            </motion.div>
         </div>
     );
 }

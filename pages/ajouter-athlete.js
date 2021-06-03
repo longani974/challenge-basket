@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React, { useRef } from "react";
 import Button from "../components/ui/Button";
+import { motion } from "framer-motion";
 
 function AjouterAthlete() {
     const nomRef = useRef();
@@ -8,6 +9,17 @@ function AjouterAthlete() {
 
     const inputStyle =
         "border-2 border-purple-700 rounded-full px-3 py-2 focus:outline-none";
+
+    const variants = {
+        hidden: {
+            opacity: 0,
+            scale: 0.7,
+        },
+        visible: {
+            opacity: 1,
+            scale: 1,
+        },
+    };
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -52,28 +64,43 @@ function AjouterAthlete() {
 
     return (
         <>
-            <h1 className="text-xl mb-2">
+            <motion.h1
+                className="text-xl mb-2"
+                variants={variants}
+                initial="hidden"
+                animate="visible"
+                exit="hidden"
+            >
                 Entrez les informations du joueur ou de la joueuse.
-            </h1>
-            <form className="flex flex-col" onSubmit={handleSubmit}>
-                <label htmlFor="nom">Nom</label>
-                <input
-                    className={inputStyle}
-                    type="text"
-                    id="nom"
-                    ref={nomRef}
-                ></input>
-                <label htmlFor="prenom">Prénom</label>
-                <input
-                    className={inputStyle}
-                    type="text"
-                    id="prenom"
-                    ref={prenomRef}
-                ></input>
+            </motion.h1>
+            <form onSubmit={handleSubmit}>
+                <motion.span
+                    className="flex flex-col"
+                    variants={variants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="hidden"
+                >
+                    <label htmlFor="nom">Nom</label>
+                    <input
+                        className={inputStyle}
+                        type="text"
+                        id="nom"
+                        ref={nomRef}
+                    ></input>
+                    <label htmlFor="prenom">Prénom</label>
+                    <input
+                        className={inputStyle}
+                        type="text"
+                        id="prenom"
+                        ref={prenomRef}
+                    ></input>
+                </motion.span>
+
                 <Button bgColor="bg-purple-600" bgColorHover="bg-purple-700">
                     Ajouter
                 </Button>
-            </form>{" "}
+            </form>
             <Link href="/">
                 <a>
                     <Button

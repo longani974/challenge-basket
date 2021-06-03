@@ -1,10 +1,26 @@
 import Link from "next/link";
 import Button from "../components/ui/Button";
 import { couleurSelonEpreuve, transformerIdEnTitreEpreuve } from "../utils";
+import { motion } from "framer-motion";
 
 function ChoisirUneEpreuve() {
+    const variants = {
+        hidden: {
+            opacity: 0,
+            y: 150,
+        },
+        visible: {
+            opacity: 1,
+            y: 0,
+        },
+    };
     return (
-        <div>
+        <motion.div
+            variants={variants}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+        >
             <Link href="/epreuve/1">
                 <a>
                     <Button
@@ -58,7 +74,7 @@ function ChoisirUneEpreuve() {
                     </Button>
                 </a>
             </Link>
-        </div>
+        </motion.div>
     );
 }
 

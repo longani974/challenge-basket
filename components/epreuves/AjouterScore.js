@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import Button from "../ui/Button";
+import { motion } from "framer-motion";
 
 function AjouterScore({
     toggleMontrerAjouterScore,
@@ -9,6 +10,29 @@ function AjouterScore({
     idEpreuve,
 }) {
     const score = useRef();
+
+    const variantsModal = {
+        hidden: {
+            opacity: 0,
+            x: -1000,
+        },
+        visible: {
+            opacity: 1,
+            x: 0,
+        },
+        exit: {
+            opacity: 0,
+            x: 1000,
+        },
+    };
+    const variantsBG = {
+        hidden: {
+            opacity: 0,
+        },
+        visible: {
+            opacity: 0.5,
+        },
+    };
 
     useEffect(() => {
         return (score.current.value = null);
@@ -55,7 +79,13 @@ function AjouterScore({
         <div
             className={` w-full h-full absolute top-0 left-0 flex items-center justify-center`}
         >
-            <div className="bg-white  max-w-md w-5/6 h-5/6 px-4 py-4 relative z-10 rounded-xl">
+            <motion.div
+                className="bg-white  max-w-md w-5/6 h-5/6 px-4 py-4 relative z-10 rounded-xl"
+                variants={variantsModal}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+            >
                 <h2 className="text-center font-bold mb-4">
                     {nom + " " + prenom}
                 </h2>
@@ -90,12 +120,15 @@ function AjouterScore({
                         </Button>
                     </span>
                 </div>
-            </div>
-
-            <div
+            </motion.div>
+            <motion.div
                 onClick={toggleMontrerAjouterScore}
-                className="w-full h-full bg-gray-900 opacity-50 absolute top-0 left-0"
-            ></div>
+                className="w-full h-full bg-gray-900 absolute top-0 left-0"
+                variants={variantsBG}
+                initial="hidden"
+                animate="visible"
+                exit="hidden"
+            ></motion.div>
         </div>
     );
 }

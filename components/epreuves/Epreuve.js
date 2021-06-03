@@ -1,3 +1,4 @@
+import { AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import {
@@ -43,15 +44,18 @@ function Epreuve({ idEpreuve }) {
                 toggleMontrerAjouterScore={toggleMontrerAjouterScore}
                 joueurChoisi={joueurChoisi}
             />
-            {montrerAjouterScore && (
-                <AjouterScore
-                    toggleMontrerAjouterScore={toggleMontrerAjouterScore}
-                    nom={nom}
-                    prenom={prenom}
-                    id={id}
-                    idEpreuve={idEpreuve}
-                />
-            )}
+            <AnimatePresence>
+                {montrerAjouterScore && (
+                    <AjouterScore
+                        toggleMontrerAjouterScore={toggleMontrerAjouterScore}
+                        nom={nom}
+                        prenom={prenom}
+                        id={id}
+                        idEpreuve={idEpreuve}
+                    />
+                )}
+            </AnimatePresence>
+
             <Link href="/choisir-une-epreuve">
                 <a>
                     <Button
